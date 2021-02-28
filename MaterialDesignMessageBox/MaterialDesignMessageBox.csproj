@@ -5,6 +5,9 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
     <Authors>SirTheta</Authors>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageId>MaterialDesignMessageBox.SirTheta</PackageId>
+    <Description>A simple MessageBox in modern looking material Design</Description>
   </PropertyGroup>
 
   <ItemGroup>
