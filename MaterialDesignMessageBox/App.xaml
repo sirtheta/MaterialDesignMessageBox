@@ -1,7 +1,7 @@
-﻿<Application x:Class="MaterialDesignMessageBox.Core.App"
+﻿<Application x:Class="MaterialDesignMessageBox.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:MaterialDesignMessageBox.Core" 
+             xmlns:local="clr-namespace:MaterialDesignMessageBox" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              StartupUri="CustomMessageBox.xaml">
     <Application.Resources>

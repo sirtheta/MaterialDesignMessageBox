@@ -4,9 +4,9 @@ using System.Windows.Input;
 namespace MaterialDesignMessageBox
 {
 
-  public partial class CustomMessageBox : Window
+  public partial class View : Window
   {
-    public CustomMessageBox(string Message, MessageType Type, MessageButtons Buttons)
+    public View(string Message, MessageType Type, MessageButtons Buttons)
     {
       InitializeComponent();
       txtMessage.Text = Message;
