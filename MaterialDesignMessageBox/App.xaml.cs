@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace MaterialDesignMessageBox
+namespace MaterialDesignMessageBoxSirTheta
 {
   /// <summary>
   /// Interaction logic for App.xaml
