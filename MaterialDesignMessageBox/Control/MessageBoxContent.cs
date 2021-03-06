@@ -116,9 +116,14 @@ namespace MaterialDesignMessageBoxSirTheta
     }
 
     #region ICommands
-    public ICommand KeyDownCommand
+    public ICommand KeyReturnCommand
     {
       get => new RelayCommand<object>(ExecuteDialogResultTrue);
+    }
+
+    public ICommand KeyEscCommand
+    {
+      get => new RelayCommand<object>(ExecuteDialogResultFalse);
     }
 
     public ICommand BtnOkClickCommandCommand
