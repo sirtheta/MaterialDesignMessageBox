@@ -20,10 +20,10 @@
         TextOptions.TextFormattingMode="Ideal"
         TextOptions.TextRenderingMode="Auto"        
         FontFamily="{DynamicResource MaterialDesignFont}">
-  <Window.InputBindings>
-    <KeyBinding Command="{Binding KeyReturnCommand}" Key="Return"/> <!--Binding of return Key-->
-    <KeyBinding Command="{Binding KeyEscCommand}" Key="Esc"/> <!--Binding of escape key-->
-  </Window.InputBindings>
+        <Window.InputBindings>
+          <KeyBinding Command="{Binding KeyReturnCommand}" Key="Return"/> <!--Binding of return Key-->
+          <KeyBinding Command="{Binding KeyEscCommand}" Key="Esc"/> <!--Binding of escape key-->
+        </Window.InputBindings>
   <Grid>
     <Border Margin="0,0,5,5" Background="White" BorderThickness="0">
       <Border.Effect>
