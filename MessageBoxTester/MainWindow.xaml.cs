@@ -20,7 +20,7 @@ namespace MessageBoxTester
 
     private void ButtonOk_Click(object sender, RoutedEventArgs e)
     {
-      if (ShowMessageBox("Button ok cklicked", MessageType.Info, MessageButtons.Ok))
+      if (ShowMessageBox("Button ok clicked", MessageType.Info, MessageButtons.Ok))
       {
         txtBox.Text = "true";
       }
@@ -28,7 +28,7 @@ namespace MessageBoxTester
 
     private void ButtonOkCancel_Click(object sender, RoutedEventArgs e)
     {
-      if (ShowMessageBox("Button Yes/No cklicked", MessageType.Confirmation, MessageButtons.YesNo))
+      if (ShowMessageBox("Button Yes/No clicked", MessageType.Confirmation, MessageButtons.YesNo))
       {
         txtBox.Text = "true";
       }
@@ -40,7 +40,30 @@ namespace MessageBoxTester
 
     private void ButtonYesNo_Click(object sender, RoutedEventArgs e)
     {
-      if(ShowMessageBox("Button ok/cancel Cklicked", MessageType.Warning, MessageButtons.OkCancel))
+      if(ShowMessageBox("Button ok/cancel clicked", MessageType.Warning, MessageButtons.OkCancel))
+      {
+        txtBox.Text = "true";
+      }
+      else
+      {
+        txtBox.Text = "false";
+      }
+    }
+
+    private void ButtonSuccess_Click(object sender, RoutedEventArgs e)
+    {
+      if (ShowMessageBox("Button Success clicked", MessageType.Success, MessageButtons.Ok))
+      {
+        txtBox.Text = "true";
+      }
+      else
+      {
+        txtBox.Text = "false";
+      }
+    }
+    private void ButtonError_Click(object sender, RoutedEventArgs e)
+    {
+      if (ShowMessageBox("Button Error clicked", MessageType.Error, MessageButtons.Ok))
       {
         txtBox.Text = "true";
       }

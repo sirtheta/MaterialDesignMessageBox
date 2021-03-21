@@ -14,10 +14,12 @@
         FontFamily="{DynamicResource MaterialDesignFont}"
         Title="MessageBoxTester" Height="400" Width="400" ResizeMode="CanMinimize">
   <Grid>
-    <Button Content="OK" Style="{DynamicResource MaterialDesignRaisedButton}" Click="ButtonOk_Click" Margin="66,69,78,82"/>
-    <Button Content="Yes/No" Click="ButtonOkCancel_Click" Margin="38,111,58,40"/>
-    <Button  Content="OK/Cancel" Click="ButtonYesNo_Click" Margin="48,18,62,133"/>
-    <TextBox Name="txtBox" HorizontalAlignment="Left" Margin="96,284,0,0" Style="{DynamicResource MaterialDesignTextBox}" FontSize="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+    <Button  Content="OK/Cancel Warning"    Click="ButtonYesNo_Click"     Margin="48,18,62,133" VerticalAlignment="Top"/>
+    <Button Content="OK Info"               Click="ButtonOk_Click"        Margin="66,69,78,82"  VerticalAlignment="Top"/>
+    <Button Content="Yes/No Confiormation"  Click="ButtonOkCancel_Click"  Margin="38,111,58,40" VerticalAlignment="Top"/>
+    <Button  Content="Error"                Click="ButtonError_Click"     Margin="43,153,67,0"  VerticalAlignment="Top"/>
+    <Button  Content="Success"              Click="ButtonSuccess_Click"   Margin="43,195,67,0"  VerticalAlignment="Top"/>
 
+    <TextBox Name="txtBox" HorizontalAlignment="Left" Margin="96,284,0,0" Style="{DynamicResource MaterialDesignTextBox}" FontSize="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
   </Grid>
 </Window>

@@ -38,7 +38,7 @@
           <RowDefinition Height="auto"/>
           <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <materialDesign:Card x:Name="cardHeader" Grid.Row="0" Padding="10" Margin="0" materialDesign:ShadowAssist.ShadowDepth="Depth3"   Background="{DynamicResource PrimaryHueMidBrush}" Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}" Visibility="Visible" Grid.ColumnSpan="2">
+        <materialDesign:Card x:Name="cardHeader" Grid.Row="0" Padding="10" Margin="0" UniformCornerRadius="0" materialDesign:ShadowAssist.ShadowDepth="Depth2"   Background="{DynamicResource PrimaryHueMidBrush}" Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}" Visibility="Visible" Grid.ColumnSpan="2">
           <StackPanel>
             <TextBlock x:Name="txtTitle" Text="{Binding TitleText}" HorizontalAlignment="Center" VerticalAlignment="Stretch" Style="{DynamicResource MaterialDesignTitleTextBlock}" FontSize="20"/>
           </StackPanel>
