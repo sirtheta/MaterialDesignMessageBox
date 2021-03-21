@@ -31,3 +31,7 @@ With messagebuttons Yes/No and Ok/Cancel, the messagebox will return true or fal
 ![Success](/images/success.png)  
 ### Warning  
 ![Warning](/images/warning.png)
+
+
+## Sample Project:
+The MessageBoxTester is just a simple project to test how this MessageBox works.
