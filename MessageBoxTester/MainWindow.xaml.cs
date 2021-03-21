@@ -56,20 +56,12 @@ namespace MessageBoxTester
       {
         txtBox.Text = "true";
       }
-      else
-      {
-        txtBox.Text = "false";
-      }
     }
     private void ButtonError_Click(object sender, RoutedEventArgs e)
     {
       if (ShowMessageBox("Button Error clicked", MessageType.Error, MessageButtons.Ok))
       {
         txtBox.Text = "true";
-      }
-      else
-      {
-        txtBox.Text = "false";
       }
     }
   }
