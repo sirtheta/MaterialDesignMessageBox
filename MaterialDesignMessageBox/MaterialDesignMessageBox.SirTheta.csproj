@@ -2,13 +2,13 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net6.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
     <Authors>SirTheta</Authors>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageId>MaterialDesignMessageBox.SirTheta</PackageId>
     <Description>A simple MessageBox in modern looking material Design</Description>
-    <Version>1.1.1</Version>
+    <Version>1.1.3</Version>
   </PropertyGroup>
 
   <ItemGroup>
