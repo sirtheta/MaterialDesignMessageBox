@@ -1,25 +1,35 @@
 [![.NET](https://github.com/sirtheta/MaterialDesignMessageBox/actions/workflows/dotnet.yml/badge.svg)](https://github.com/sirtheta/MaterialDesignMessageBox/actions/workflows/dotnet.yml)
-# MaterialDesignMessageBox
+# MaterialDesignMessageBox by SirTheta
 
-## A simple Messagebox package in the modern material Design.  
-Just add this as a NuGet Package in your project.
+## A simple Messagebox package in the modern material design.  
+Add this as a NuGet Package in your project.
 
-#### How to use:
-Implement a method to call the messagebox like this:
+### How to use:
+Call the MaterialDesignMessageBox like that:
 ``` 
-public bool ShowMessageBox(string messageStr, MessageType type, MessageButtons buttons)
+MaterialDesignMessageBox.Show("This is a messagebox with information.", MessageType.Info, MessageButtons.Ok);
+```
+You can choose between three different predefined types of buttons: Ok, Yes/No, Cancel or you can use custom buttons as well.  
+For the message type you can choose between this message types: Confirmation, Success, Warning, Error, Question 
+
+i.e.: `MaterialDesignMessageBox.Show("Button Success clicked", MessageType.Success, MessageButtons.Ok)`
+
+The return type of the message box is a `MaterialDesignMessageBoxResult` which has the following definitions:
+```
+enum MaterialDesignMessageBoxResult
 {
-  return (bool)new MaterialDesignMessageBox(messageStr, type, buttons).ShowDialog();
+    None = 0,
+    OK = 1,
+    Cancel = 2,
+    Yes = 6,
+    No = 7
 }
 ```
-You can choose between three different types of buttons: Ok, Yes/No, Cancel   
-and you can choose beteween this message types: Confirmation, Success, Warning, Error  
-i.e.: `ShowMessageBox("Button Success clicked", MessageType.Success, MessageButtons.Ok)`
+If you close the messagebox with the escape key, it will return None. 
 
-A message with only the button ok, will always return true since one can not close the messagebox without clicking Ok button.  
-With messagebuttons Yes/No and Ok/Cancel, the messagebox will return true or false according to the clicked button.  
+If you press the return-key the messagebox will return OK or Yes, according of the buttons displayed.
 
-## Overview of the four messagebox types:  
+## Overview of some messagebox types:  
 
 ### Confirmation  
 ![confirmation](/images/confirmation.png)  
@@ -34,4 +44,4 @@ With messagebuttons Yes/No and Ok/Cancel, the messagebox will return true or fal
 
 
 ## Sample Project:
-The MessageBoxTester is just a simple project to test how this MessageBox works.
+The MessageBoxTester is a simple project to test how this MessageBox works.

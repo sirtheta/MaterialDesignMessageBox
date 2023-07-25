@@ -1,14 +1,23 @@
-﻿using System.Windows;
+﻿using MaterialDesignMessageBoxSirTheta.Definitions;
+using MaterialDesignMessageBoxSirTheta.ViewModel;
+using System.Windows;
+using System.Windows.Input;
 
 namespace MaterialDesignMessageBoxSirTheta
 {
 
-  public partial class MaterialDesignMessageBox : Window
-  {
-    public MaterialDesignMessageBox(string message, MessageType type, MessageButtons buttons)
+    public partial class MaterialDesignMessageBoxView : Window
     {
-      InitializeComponent();
-      DataContext = new MessageBoxContent(message, type, buttons);
+        public MaterialDesignMessageBoxView(string t_message, MessageType t_type, MessageButtons t_buttons, string t_customTrue, string t_customFalse)
+        {
+            InitializeComponent();
+            DataContext = new MessageBoxViewModel(t_message, t_type, t_buttons, t_customTrue, t_customFalse);
+        }
+
+        // handling for the esc key command, if esc key is pressed, the MaterialDesignMessageBoxResult will be None
+        private void CloseCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            Close();
+        }
     }
-  }
 }

@@ -1,68 +1,51 @@
 ﻿using System.Windows;
 using MaterialDesignMessageBoxSirTheta;
+using MaterialDesignMessageBoxSirTheta.Definitions;
 
 namespace MessageBoxTester
 {
-  /// <summary>
-  /// Interaction logic for MainWindow.xaml
-  /// </summary>
-  public partial class MainWindow : Window
-  {
-    public MainWindow()
+    /// <summary>
+    /// Interaction logic for MainWindow.xaml
+    /// </summary>
+    public partial class MainWindow : Window
     {
-      InitializeComponent();
-    }
+        public MainWindow()
+        {
+            InitializeComponent();
+        }
 
-    public static bool ShowMessageBox(string messageStr, MessageType type, MessageButtons buttons)
-    {
-      return (bool)new MaterialDesignMessageBox(messageStr, type, buttons).ShowDialog();
-    }
+        private void ButtonOk_Click(object sender, RoutedEventArgs e)
+        {
+            txtBox.Text = MaterialDesignMessageBox.Show("Button ok clicked", MessageType.Info, MessageButtons.Ok).ToString();
+        }
 
-    private void ButtonOk_Click(object sender, RoutedEventArgs e)
-    {
-      if (ShowMessageBox("Button ok clicked", MessageType.Info, MessageButtons.Ok))
-      {
-        txtBox.Text = "true";
-      }
-    }
+        private void ButtonOkCancel_Click(object sender, RoutedEventArgs e)
+        {
+            txtBox.Text = MaterialDesignMessageBox.Show("Button Yes/No clicked", MessageType.Confirmation, MessageButtons.YesNo).ToString();
+        }
 
-    private void ButtonOkCancel_Click(object sender, RoutedEventArgs e)
-    {
-      if (ShowMessageBox("Button Yes/No clicked", MessageType.Confirmation, MessageButtons.YesNo))
-      {
-        txtBox.Text = "true";
-      }
-      else
-      {
-        txtBox.Text = "false";
-      }
-    }
+        private void ButtonYesNo_Click(object sender, RoutedEventArgs e)
+        {
 
-    private void ButtonYesNo_Click(object sender, RoutedEventArgs e)
-    {
-      if(ShowMessageBox("Button ok/cancel clicked", MessageType.Warning, MessageButtons.OkCancel))
-      {
-        txtBox.Text = "true";
-      }
-      else
-      {
-        txtBox.Text = "false";
-      }
-    }
+            txtBox.Text = MaterialDesignMessageBox.Show("Button ok/cancel clicked", MessageType.Warning, MessageButtons.OkCancel).ToString();
+        }
 
-    private void ButtonSuccess_Click(object sender, RoutedEventArgs e)
-    {
-      if (ShowMessageBox("Button Success clicked", MessageType.Success, MessageButtons.Ok))
-      {
-        txtBox.Text = "true";
-      }
+        private void ButtonSuccess_Click(object sender, RoutedEventArgs e)
+        {
+
+            txtBox.Text = MaterialDesignMessageBox.Show("Button Success clicked", MessageType.Success, MessageButtons.Ok).ToString();
+
+        }
+        private void ButtonError_Click(object sender, RoutedEventArgs e)
+        {
+
+            txtBox.Text = MaterialDesignMessageBox.Show("Button Error clicked", MessageType.Error, MessageButtons.Ok).ToString();
+
+        }
+
+        private void ButtonCustom_Click(object sender, RoutedEventArgs e)
+        {
+            txtBox.Text = MaterialDesignMessageBox.Show("Button custom clicked", MessageType.Question, MessageButtons.Custom, "do that little thing inside your head and spin around", "do this little thing inside your head and spin around").ToString();
+        }
     }
-    private void ButtonError_Click(object sender, RoutedEventArgs e)
-    {
-      if (ShowMessageBox("Button Error clicked", MessageType.Error, MessageButtons.Ok))
-      {
-        txtBox.Text = "true";
-      }
-    }
-  }
 }

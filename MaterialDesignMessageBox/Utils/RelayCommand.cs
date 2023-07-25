@@ -22,7 +22,7 @@ namespace MaterialDesignMessageBoxSirTheta
     /// <param name="CanExecute">Execution status logic</param>
     internal RelayCommand(Action<T> Execute, Predicate<T> CanExecute)
     {
-      _Execute = Execute ?? throw new ArgumentNullException("Execute");
+      _Execute = Execute ?? throw new ArgumentNullException(nameof(Execute));
       _CanExecute = CanExecute;
     }
     #endregion
@@ -30,7 +30,7 @@ namespace MaterialDesignMessageBoxSirTheta
 
     #region ICommand Members
     [DebuggerStepThrough]
-    public bool CanExecute(object Parameter) => _CanExecute == null ? true : _CanExecute((T)Parameter);
+    public bool CanExecute(object Parameter) => _CanExecute == null || _CanExecute((T)Parameter);
 
 
     public event EventHandler CanExecuteChanged

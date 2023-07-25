@@ -1,6 +1,6 @@
-﻿<Window x:Class="MaterialDesignMessageBoxSirTheta.MaterialDesignMessageBox"
+﻿<Window x:Class="MaterialDesignMessageBoxSirTheta.MaterialDesignMessageBoxView"
         xmlns:xc="clr-namespace:MaterialDesignMessageBoxSirTheta"
-        xc:DialogCloser.DialogResult="{Binding DialogResult}"
+        xc:DialogCloser.DialogResult="{Binding Result}"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -13,92 +13,139 @@
         AllowsTransparency="True"
         ResizeMode="NoResize" Topmost="True" ShowInTaskbar="False"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
-        d:DataContext="{d:DesignInstance Type=xc:MessageBoxContent}"
+        xmlns:viewmodel="clr-namespace:MaterialDesignMessageBoxSirTheta.ViewModel"
+        d:DataContext="{d:DesignInstance Type=viewmodel:MessageBoxViewModel}"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
         TextElement.FontSize="10"
         TextOptions.TextFormattingMode="Ideal"
         TextOptions.TextRenderingMode="Auto"        
         FontFamily="{DynamicResource MaterialDesignFont}">
-        <Window.InputBindings>
-          <KeyBinding Command="{Binding KeyReturnCommand}" Key="Return"/> <!--Binding of return Key-->
-          <KeyBinding Command="{Binding KeyEscCommand}" Key="Esc"/> <!--Binding of escape key-->
-        </Window.InputBindings>
-  <Grid>
-    <Border Margin="0,0,5,5" Background="White" BorderThickness="0">
-      <Border.Effect>
-        <DropShadowEffect BlurRadius="5" Opacity="0.4"/>
-      </Border.Effect>
-      <Grid>
-        <Grid.ColumnDefinitions>
-          <ColumnDefinition Width="197*"/>
-          <ColumnDefinition Width="295*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-          <RowDefinition Height="auto"/>
-          <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <materialDesign:Card x:Name="cardHeader" Grid.Row="0" Padding="10" Margin="0" UniformCornerRadius="0" materialDesign:ShadowAssist.ShadowDepth="Depth2"   Background="{DynamicResource PrimaryHueMidBrush}" Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}" Visibility="Visible" Grid.ColumnSpan="2">
-          <StackPanel>
-            <TextBlock x:Name="txtTitle" Text="{Binding TitleText}" HorizontalAlignment="Center" VerticalAlignment="Stretch" Style="{DynamicResource MaterialDesignTitleTextBlock}" FontSize="20"/>
-          </StackPanel>
-        </materialDesign:Card>
-        <Grid Grid.Row="1" Grid.ColumnSpan="2">
-          <Grid Margin="5">
-            <Grid.RowDefinitions>
-              <RowDefinition Height="auto"/>
-              <RowDefinition Height="auto"/>
-              <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
+    <Window.InputBindings>
+        <!--Binding of return Key-->
+        <KeyBinding Command="{Binding KeyReturnCommand}" Key="Return"/>
+        <!--Binding of escape key-->
+        <KeyBinding Command="ApplicationCommands.Close" Key="Esc"/>
+    </Window.InputBindings>
+    <Window.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.Close" Executed="CloseCommandBinding_Executed" />
+    </Window.CommandBindings>
+    <Grid>
+        <Border Margin="0,0,5,5" Background="White" BorderThickness="0">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="5" Opacity="0.4"/>
+            </Border.Effect>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="197*"/>
+                    <ColumnDefinition Width="295*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <materialDesign:Card x:Name="cardHeader" 
+                                     Grid.Row="0" 
+                                     Padding="10" 
+                                     Margin="0" 
+                                     UniformCornerRadius="0" 
+                                     materialDesign:ElevationAssist.Elevation="Dp2"   
+                                     Background="{DynamicResource PrimaryHueMidBrush}" 
+                                     Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}" 
+                                     Visibility="Visible" 
+                                     Grid.ColumnSpan="2">
+                    <StackPanel>
+                        <TextBlock x:Name="txtTitle" 
+                                   Text="{Binding TitleText}" 
+                                   HorizontalAlignment="Center" 
+                                   VerticalAlignment="Stretch" 
+                                   Style="{DynamicResource MaterialDesignTitleTextBlock}" 
+                                   FontSize="20"/>
+                    </StackPanel>
+                </materialDesign:Card>
+                <Grid Grid.Row="1" Grid.ColumnSpan="2">
+                    <Grid Margin="5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
 
-            <Grid Grid.Row="0">
-              <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="0*"/>
-              </Grid.RowDefinitions>
+                        <Grid Grid.Row="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="0*"/>
+                            </Grid.RowDefinitions>
 
-              <TextBox x:Name="txtMessage" 
-                       Text="{Binding Message}" 
-                       HorizontalAlignment="Center" 
-                       TextWrapping="Wrap" IsReadOnly="True" 
-                       Grid.Row="0" Margin="5" 
-                       FontSize="18"/>
+                            <TextBox x:Name="txtMessage" 
+                                    Text="{Binding Message}" 
+                                    HorizontalAlignment="Center" 
+                                    TextWrapping="Wrap" IsReadOnly="True" 
+                                    Grid.Row="0" Margin="5" 
+                                    FontSize="18"/>
 
 
+                        </Grid>
+                        <Grid Grid.Row="1" Margin="0,0,0,5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Button x:Name="btnOk" 
+                                    Grid.Column="1" 
+                                    Visibility="{Binding BtnOk}" 
+                                    Command="{Binding BtnOkClickCommandCommand}" 
+                                    Style="{DynamicResource MaterialDesignRaisedButton}" 
+                                    Margin="5" Width="100" FontSize="18" Content="OK" ToolTip="OK"/>
+
+                            <Button x:Name="btnCancel" Grid.Column="2" 
+                                    Visibility="{Binding BtnCancel}" 
+                                    Command="{Binding BtnCancelClickCommandCommand}" 
+                                    Style="{DynamicResource MaterialDesignRaisedButton}" 
+                                    Margin="5" Width="100" FontSize="18"  Content="Cancel" ToolTip="Cancel"/>
+                            
+                            <Button x:Name="btnCustomTrue" Grid.Column="1" 
+                                    Visibility="{Binding BtnCustomTrue}" 
+                                    Command="{Binding BtnYesClickCommandCommand}" 
+                                    Style="{DynamicResource MaterialDesignRaisedButton}" 
+                                    ToolTip="{Binding BtnCustomTextTrue}" 
+                                    Margin="5" 
+                                    FontSize="18"
+                                    Width="Auto" MaxWidth="180"  
+                                    Height="Auto" MaxHeight="80">
+                                <TextBlock Text="{Binding BtnCustomTextTrue}" TextWrapping="Wrap" VerticalAlignment="Center"/>
+                            </Button>
+
+                            <Button x:Name="btnCustomFalse" Grid.Column="2" 
+                                    Visibility="{Binding BtnCustomFalse}" 
+                                    Command="{Binding BtnNoClickCommandCommand}" 
+                                    Style="{DynamicResource MaterialDesignRaisedButton}" 
+                                    ToolTip="{Binding BtnCustomTextFalse}"
+                                    Margin="5" 
+                                    FontSize="18"
+                                    Width="Auto" MaxWidth="180"  
+                                    Height="Auto" MaxHeight="80">
+                                <TextBlock Text="{Binding BtnCustomTextFalse}" TextWrapping="Wrap" VerticalAlignment="Center"/>
+                            </Button>
+
+                            <Button x:Name="btnYes" Grid.Column="1" 
+                                    Visibility="{Binding BtnYes}" 
+                                    Command="{Binding BtnYesClickCommandCommand}" 
+                                    Style="{DynamicResource MaterialDesignRaisedButton}" 
+                                    Margin="5" Width="100" FontSize="18" Content="Yes" ToolTip="Yes"/>
+
+                            <Button x:Name="btnNo" Grid.Column="2" 
+                                    Visibility="{Binding BtnNo}" 
+                                    Command="{Binding BtnNoClickCommandCommand}" 
+                                    Style="{DynamicResource MaterialDesignRaisedButton}" 
+                                    Margin="5" Width="100" FontSize="18" Content="No" ToolTip="No"/>
+                        </Grid>
+                    </Grid>
+                </Grid>
             </Grid>
-            <Grid Grid.Row="1" Margin="0,0,0,5">
-              <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="*"/>
-              </Grid.ColumnDefinitions>
-
-              <Button x:Name="btnOk" 
-                      Grid.Column="1" 
-                      Visibility="{Binding BtnOk}" 
-                      Command="{Binding BtnOkClickCommandCommand}" 
-                      Style="{DynamicResource MaterialDesignRaisedButton}" 
-                      Margin="5" Width="100" FontSize="18" Content="OK" ToolTip="OK"/>
-              <Button x:Name="btnCancel" Grid.Column="2" 
-                      Visibility="{Binding BtnCancel}" 
-                      Command="{Binding BtnCancelClickCommandCommand}" 
-                      Style="{DynamicResource MaterialDesignRaisedButton}" 
-                      Margin="5" Width="100" FontSize="18"  Content="Cancel" ToolTip="Cancel"/>
-              <Button x:Name="btnYes" Grid.Column="1" 
-                      Visibility="{Binding BtnYes}" 
-                      Command="{Binding BtnYesClickCommandCommand}" 
-                      Style="{DynamicResource MaterialDesignRaisedButton}" 
-                      Margin="5" Width="100" FontSize="18" Content="Yes" ToolTip="Yes"/>
-              <Button x:Name="btnNo" Grid.Column="2" 
-                      Visibility="{Binding BtnNo}" 
-                      Command="{Binding BtnNoClickCommandCommand}" 
-                      Style="{DynamicResource MaterialDesignRaisedButton}" 
-                      Margin="5" Width="100" FontSize="18" Content="No" ToolTip="No"/>
-            </Grid>
-          </Grid>
-        </Grid>
-      </Grid>
-    </Border>
-  </Grid>
+        </Border>
+    </Grid>
 </Window>
