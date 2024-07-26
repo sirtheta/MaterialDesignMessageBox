@@ -31,7 +31,7 @@
         <CommandBinding Command="ApplicationCommands.Close" Executed="CloseCommandBinding_Executed" />
     </Window.CommandBindings>
     <Grid>
-        <Border Margin="0,0,5,5" Background="White" BorderThickness="0">
+        <Border Margin="0,0,5,5" Background="{DynamicResource MaterialDesign.Brush.Background}" BorderThickness="0">
             <Border.Effect>
                 <DropShadowEffect BlurRadius="5" Opacity="0.4"/>
             </Border.Effect>
@@ -50,18 +50,16 @@
                                      Margin="0" 
                                      UniformCornerRadius="0" 
                                      materialDesign:ElevationAssist.Elevation="Dp2"   
-                                     Background="{DynamicResource PrimaryHueMidBrush}" 
-                                     Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}" 
+                                     Background="{DynamicResource MaterialDesign.Brush.Primary}" 
+                                     Foreground="{DynamicResource MaterialDesign.Brush.Primary.Foreground}" 
                                      Visibility="Visible" 
                                      Grid.ColumnSpan="2">
-                    <StackPanel>
-                        <TextBlock x:Name="txtTitle" 
+                    <TextBlock x:Name="txtTitle" 
                                    Text="{Binding TitleText}" 
                                    HorizontalAlignment="Center" 
                                    VerticalAlignment="Stretch" 
                                    Style="{DynamicResource MaterialDesignTitleTextBlock}" 
                                    FontSize="20"/>
-                    </StackPanel>
                 </materialDesign:Card>
                 <Grid Grid.Row="1" Grid.ColumnSpan="2">
                     <Grid Margin="5">
@@ -78,13 +76,11 @@
                             </Grid.RowDefinitions>
 
                             <TextBox x:Name="txtMessage" 
-                                    Text="{Binding Message}" 
+                                    Text="{Binding Message}"                                    
                                     HorizontalAlignment="Center" 
                                     TextWrapping="Wrap" IsReadOnly="True" 
                                     Grid.Row="0" Margin="5" 
                                     FontSize="18"/>
-
-
                         </Grid>
                         <Grid Grid.Row="1" Margin="0,0,0,5">
                             <Grid.ColumnDefinitions>
